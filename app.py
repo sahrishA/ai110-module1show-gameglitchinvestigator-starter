@@ -139,6 +139,8 @@ if new_game:
     #  It carries the old value. So I'm adding new code to hadle it
     st.session_state.score = 0
     st.session_state.secret = random.randint(1, 100)
+    # The history wasn't updating. Now added code to history reseting
+    st.session_state.history-[]
     st.success("New game started.")
     st.rerun()
 
@@ -166,8 +168,7 @@ if submit:
             so when check_guess compares the integer guess to a string secret it triggers the TypeError‑handling code. 
             After that the new Game button start to work'''
             secret = st.session_state.secret
-        else:
-            secret = st.session_state.secret
+            # not need for else statement as its producing same thing as if 
 
         outcome, message = check_guess(guess_int, secret)
 
