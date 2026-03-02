@@ -39,14 +39,14 @@ It wrote the code, ran away, and now the game is unplayable.
 - [x] Describe the game's purpose.
       This game let you gues a number and find the un-usual behavior that we experience when we input any guessed number.
 - [x] Detail which bugs you found.
-      ## Bug1
+      1. Bug1
       - There was bug in bug in the if else statement of try section where we need to fix the comment from Go HIGHER! to Go LOWER for the condition if guess is higher than secret. AND VICE VERSA if guess is lower than secret to updat the comment to HIGHER!
-      ## Bug2
+      2. Bug2
       - There was bug in the except section of TypeError where we need to fix the comment from Go HIGHER! to Go LOWER for the condition if guess is higher than secret.
          AND VICE VERSA if guess is lower than secret to updat the comment to HIGHER!
-      ## Bug3
+      3. Bug3
       - There was bug that it wasn't updating the value of the score to zero whenever we start the new game.
-      ## Bug4
+      4. Bug4
       - str is  bug that casue glitch. str in secret =str( st.session_state.secrets) code is a bug because on every even‑numbered attempt the secret is converted to a    string,  so when check_guess compares the integer guess to a string secret it triggers the TypeError‑handling code. I also notice that the new game button wasn't working properly due to this error
             
    
@@ -58,7 +58,7 @@ It wrote the code, ran away, and now the game is unplayable.
             else:
               return "Too Low", "📈 Go HIGHER!
           - To fix the bug in the except section of TypeError: I use following
-             # I fixed the comment from Go HIGHER! to Go LOWER AND VICE VERSA
+             I fixed the comment from Go HIGHER! to Go LOWER AND VICE VERSA
              if g > secret:
                return "Too High", "📉 Go LOWER!"
              else:
