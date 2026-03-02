@@ -48,6 +48,8 @@ It wrote the code, ran away, and now the game is unplayable.
       - There was bug that it wasn't updating the value of the score to zero whenever we start the new game.
       4. Bug4
       - str is  bug that casue glitch. str in secret =str( st.session_state.secrets) code is a bug because on every even‑numbered attempt the secret is converted to a    string,  so when check_guess compares the integer guess to a string secret it triggers the TypeError‑handling code. I also notice that the new game button wasn't working properly due to this error
+      5. Bug 5
+      - It wasn't reseting the history to empty after newGame buttom being clicked
             
    
 - [x] Explain what fixes you applied.
@@ -68,8 +70,11 @@ It wrote the code, ran away, and now the game is unplayable.
              st.session_state.score = 0
            - Removed the str from the  secret =str( st.session_state.secrets) 
              After that the new Game button start to work
-             secret = st.session_state.secrets
+             secret = st.session_state.secret. More we don't need if else statement both statements are doing same task. So I just had secret = st.session_state.secret with if else statement
              The "New Game" button start to work after fixing this problem.
+           - To fix the history reseting bug, I used following code if newgame :
+              st.session_state.history = []
+            
 
 ## 📸 Demo
 
