@@ -162,10 +162,10 @@ if submit:
 
         if st.session_state.attempts % 2 == 0:
             #update/ remove the bug that casue glitch
-            ''' remove the str from the  secret =str( st.session_state.secrets) because On every even‑numbered attempt the secret is converted to a string, 
+            ''' remove the  s and str from the secrets and  secret =str( st.session_state.secrets)  respectively. Because On every even‑numbered attempt the secret is converted to a string, 
             so when check_guess compares the integer guess to a string secret it triggers the TypeError‑handling code. 
             After that the new Game button start to work'''
-            secret = st.session_state.secrets
+            secret = st.session_state.secret
         else:
             secret = st.session_state.secret
 
