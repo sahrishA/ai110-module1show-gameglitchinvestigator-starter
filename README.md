@@ -70,7 +70,7 @@ It wrote the code, ran away, and now the game is unplayable.
              st.session_state.score = 0
            - Removed the str from the  secret =str( st.session_state.secrets) 
              After that the new Game button start to work
-             secret = st.session_state.secret. More we don't need if else statement both statements are doing same task. So I just had secret = st.session_state.secret with if else statement
+             secret = st.session_state.secret. More we don't need  else statement as else statement is producing same thing. So I just had secret = st.session_state.secret with if  statement
              The "New Game" button start to work after fixing this problem.
            - To fix the history reseting bug, I used following code if newgame :
               st.session_state.history = []
