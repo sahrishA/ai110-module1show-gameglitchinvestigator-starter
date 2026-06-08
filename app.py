@@ -32,21 +32,23 @@ def parse_guess(raw: str):
 def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
-# need to fix the comment from Go HIGHER! to Go LOWER
+    
+    # Compare guess to secret and provide directional feedback
     try:
         if guess > secret:
             return "Too High", "📉 Go LOWER!" 
         else:
             return "Too Low", "📈 Go HIGHER!"
     except TypeError:
+        # Handle type mismatch by converting guess to string for comparison
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
-        # need to fix the comment from Go HIGHER! to Go LOWER AND VICE VERSA
+        # String comparison: lexicographic ordering (not numeric)
         if g > secret:
             return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📈Go HIGHER!"
+            return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -91,6 +93,7 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+# Initialize session state variables for game state management
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
@@ -134,13 +137,11 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # Reset all game state for a new game
     st.session_state.attempts = 0
-    # there is bug that it's not updating the score.
-    #  It carries the old value. So I'm adding new code to hadle it
     st.session_state.score = 0
     st.session_state.secret = random.randint(1, 100)
-    # The history wasn't updating. Now added code to history reseting
-    st.session_state.history-[]
+    st.session_state.history = []
     st.success("New game started.")
     st.rerun()
 
@@ -162,13 +163,8 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            #update/ remove the bug that casue glitch
-            ''' remove the  s and str from the secrets and  secret =str( st.session_state.secrets)  respectively. Because On every even‑numbered attempt the secret is converted to a string, 
-            so when check_guess compares the integer guess to a string secret it triggers the TypeError‑handling code. 
-            After that the new Game button start to work'''
-            secret = st.session_state.secret
-            # not need for else statement as its producing same thing as if 
+        # Use the integer secret for consistent comparison logic
+        secret = st.session_state.secret
 
         outcome, message = check_guess(guess_int, secret)
 
